@@ -5,6 +5,17 @@ change, what was verified, and the downstream impact.
 
 ## 2026-07-03
 
+### Added the R textbook + interactive exercises to the Research sidebar
+- **Feature:** two teaching resources mentioned on the old Google Sites page
+  were missing from the new site's Links sidebar.
+- **Change (`research.html`):** added "R Programming Textbook" linking to
+  https://federicoroscioli.github.io/book/ and "Interactive Exercises" linking
+  to https://federicoroscioli.shinyapps.io/exercises/, placed after the slide
+  decks and before Download CV.
+- **Verified:** served locally and confirmed both links render with the correct
+  hrefs in the sidebar.
+- **Impact:** Research page now links out to both external teaching resources.
+
 ### Simplified homepage link row + trimmed a duplicate sidebar link
 - **Feature:** requested changes now that the site is live.
 - **Change:**
