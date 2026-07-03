@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federico Roscioli — Economist</title>
+<meta name="description" content="PhD Candidate in Economics and Finance at the University of Rome Tor Vergata. Development and environmental economics, poverty, and food security.">
+<link rel="icon" type="image/jpeg" href="assets/logos/fav_icon.jpg">
+<style>
+  :root {
+    --bg: #f6f1eb;
+    --surface2: #e8e0d5;
+    --text: #211a10;
+    --muted: #7a6a55;
+    --accent: #8b4a2b;
+    --accent-hover: #6e3a20;
+    --border: #d4c9b8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.75;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--text);
+    color: var(--bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 52px;
+  }
+  nav .logo {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul a {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c8bfaf;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--bg); }
+
+  /* ── HERO (fills the screen between nav and footer) ── */
+  .hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 48px;
+  }
+  .hero-inner {
+    max-width: 900px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: #4a3c28;
+    line-height: 1.85;
+    margin-bottom: 32px;
+  }
+  .hero p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .hero p a:hover { border-color: var(--accent); }
+
+  .hero-photo {
+    width: 220px;
+    height: 220px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ── LINK BUTTONS ── */
+  .links { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: #7a6a55;
+    text-align: center;
+    padding: 20px 48px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+  footer a { color: #9a8a75; text-decoration: none; }
+  footer a:hover { color: var(--bg); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    nav ul { gap: 18px; }
+    .hero { padding: 40px 20px; }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: center;
+      justify-items: center;
+    }
+    .hero-eyebrow { justify-content: center; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-photo { order: -1; width: 160px; height: 160px; }
+    .links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="logo">Federico Roscioli</a>
+  <ul>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="photography.html">Photography</a></li>
+    <li><a href="assets/docs/ROF_cv.pdf">CV</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">PhD Candidate · Economics &amp; Finance · Tor Vergata</div>
+      <h1>Federico Roscioli</h1>
+      <p>
+        I am a PhD candidate in Economics and Finance at the University of Rome Tor Vergata,
+        working at the intersection of development and environmental economics — poverty,
+        food security, carbon policy, and the political economy of climate action. I am
+        currently a trainee at the European Commission's Joint Research Centre, and have
+        consulted for FAO, the World Bank, IDOS, and Bioversity International. Before
+        economics, I worked as a <a href="photography.html">freelance photojournalist</a>.
+      </p>
+      <div class="links">
+        <a href="assets/docs/ROF_cv.pdf" class="btn-primary">Download CV</a>
+        <a href="photography.html" class="btn-ghost">Photography →</a>
+        <a href="https://scholar.google.com/citations?user=OfXtLnYAAAAJ" target="_blank" rel="noopener" class="btn-ghost">Google Scholar ↗</a>
+        <a href="mailto:federico.roscioli@students.uniroma2.eu" class="btn-ghost">Email</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/08.jpg" alt="Federico Roscioli">
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  © 2026 Federico Roscioli · Tor Vergata School of Economics, Rome · <a href="mailto:federico.roscioli@students.uniroma2.eu">federico.roscioli@students.uniroma2.eu</a>
+</footer>
+
+</body>
+</html>

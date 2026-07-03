@@ -1,0 +1,12 @@
+# Original ~2000px photos — kept locally (Dropbox-backed); the site only
+# loads the optimized copies in assets/photos-web/. Rerun optimize-photos.sh
+# after adding new originals.
+assets/photos/
+
+# Early design prototypes, superseded by index.html / research.html
+minimal.html
+editorial.html
+pub-graphics-preview.html
+
+# macOS
+.DS_Store

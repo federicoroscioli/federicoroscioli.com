@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federico Roscioli — Economist</title>
+<meta name="description" content="PhD Candidate in Economics and Finance at the University of Rome Tor Vergata. Research in development economics, environmental economics, food security, and poverty.">
+<link rel="icon" type="image/jpeg" href="assets/logos/fav_icon.jpg">
+<style>
+  :root {
+    --bg: #f6f1eb;
+    --surface: #efe9e0;
+    --surface2: #e8e0d5;
+    --text: #211a10;
+    --muted: #7a6a55;
+    --accent: #8b4a2b;
+    --accent-hover: #6e3a20;
+    --accent-light: #f0ddd3;
+    --border: #d4c9b8;
+    --border-light: #ddd5c5;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.75;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--text);
+    color: var(--bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c8bfaf;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--bg); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 72px 48px 56px;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 64px;
+    align-items: start;
+  }
+  .hero-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero p {
+    font-size: 1.02rem;
+    color: #4a3c28;
+    line-height: 1.82;
+    margin-bottom: 28px;
+    max-width: 540px;
+  }
+  .hero-photo {
+    width: 200px;
+    height: 200px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+  /* ── KEYWORD BAND ── */
+  .keyword-band {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .keyword-band span {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-right: 24px;
+    margin-right: 24px;
+    border-right: 1px solid var(--border);
+    line-height: 2;
+  }
+  .keyword-band span:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 72px;
+    align-items: start;
+  }
+  .primary { min-width: 0; }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  section { margin-bottom: 56px; }
+
+  /* ── PUBLICATIONS ── */
+  .pub-item {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .pub-item:first-of-type { padding-top: 0; }
+  .pub-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .pub-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 700;
+    min-width: 20px;
+  }
+  .pub-year {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .pub-title {
+    font-size: 0.96rem;
+    line-height: 1.5;
+    margin-bottom: 5px;
+  }
+  .pub-title a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .pub-title a:hover { border-color: var(--accent); color: var(--accent); }
+  .pub-authors {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .pub-authors strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .pub-journal {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.74rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── WORK IN PROGRESS ── */
+  .wip-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .wip-title { font-size: 0.93rem; margin-bottom: 5px; line-height: 1.45; }
+  .wip-note {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+  }
+  .exp-year {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding-top: 3px;
+    line-height: 1.4;
+  }
+  .exp-role { font-size: 0.93rem; margin-bottom: 3px; font-weight: bold; }
+  .exp-where {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  /* ── TEACHING ── */
+  .teach-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .teach-year {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .teach-course { font-size: 0.9rem; }
+  .teach-level {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: block;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { padding-top: 0; }
+  .sidebar-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 22px 20px;
+    margin-bottom: 16px;
+  }
+  .sidebar-block h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .sidebar-link {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.15s;
+  }
+  .sidebar-link:last-child { border-bottom: none; padding-bottom: 0; }
+  .sidebar-link:hover { color: var(--accent); }
+  .sidebar-link .arr { color: var(--muted); font-size: 0.85rem; }
+  .contact-line {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .contact-line:last-child { margin-bottom: 0; }
+  .contact-line a { color: var(--accent); text-decoration: none; }
+  .contact-line a:hover { text-decoration: underline; }
+  .skill-group {
+    margin-bottom: 10px;
+  }
+  .skill-group-name {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .skill-group p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.77rem;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: baseline;
+  }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-name { font-weight: 600; }
+  .lang-level { color: var(--muted); font-size: 0.72rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: #7a6a55;
+    text-align: center;
+    padding: 28px 48px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+  footer a { color: #9a8a75; text-decoration: none; }
+  footer a:hover { color: var(--bg); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 760px) {
+    nav { padding: 0 20px; }
+    nav ul { gap: 18px; }
+    .hero { grid-template-columns: 1fr; padding: 40px 20px 36px; gap: 32px; }
+    .hero-photo { width: 140px; height: 140px; }
+    .keyword-band { padding: 12px 20px; }
+    main { grid-template-columns: 1fr; padding: 40px 20px 60px; gap: 48px; }
+    .exp-item { grid-template-columns: 64px 1fr; }
+    .teach-item { grid-template-columns: 84px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="logo">Federico Roscioli</a>
+  <ul>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="photography.html">Photography</a></li>
+    <li><a href="assets/docs/ROF_cv.pdf">CV</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">PhD Candidate · Economics &amp; Finance · Tor Vergata</div>
+    <h1>Federico Roscioli</h1>
+    <p>I work at the intersection of development and environmental economics — studying poverty, food security, carbon policy, and the political economy of climate action. I am a PhD candidate at the University of Rome Tor Vergata, currently a trainee at the European Commission's Joint Research Centre, and have consulted for FAO, the World Bank, IDOS, and Bioversity International.</p>
+    <div class="cta-row">
+      <a href="assets/docs/ROF_cv.pdf" class="btn-primary">Download CV</a>
+      <a href="mailto:federico.roscioli@students.uniroma2.eu" class="btn-ghost">Get in touch →</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/08.jpg" alt="Federico Roscioli">
+  </div>
+</div>
+
+<!-- ── KEYWORD BAND ── -->
+<div class="keyword-band">
+  <span>Development Economics</span>
+  <span>Environmental Economics</span>
+  <span>Food Security</span>
+  <span>Poverty &amp; Inequality</span>
+  <span>Political Economy</span>
+  <span>Composite Indicators</span>
+</div>
+
+<!-- ── MAIN ── -->
+<main>
+  <div class="primary">
+
+    <!-- WORK IN PROGRESS -->
+    <section id="research">
+      <div class="section-label">Work in Progress</div>
+      <div class="wip-item">
+        <div class="wip-title">The policy is greener on the other side. Evidence from US States</div>
+        <div class="wip-note">Determinants of environmental policies across US states · Guest researcher, IDOS (2025)</div>
+      </div>
+      <div class="wip-item">
+        <div class="wip-title">Emissions inequality: evidence from household survey data</div>
+        <div class="wip-note">Carbon footprint distribution and inequality · In progress</div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section>
+      <div class="section-label">Peer-reviewed Publications</div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-num">1</span>
+          <span class="pub-year">2025</span>
+        </div>
+        <div class="pub-title">
+          <a href="https://doi.org/10.1002/sd" target="_blank" rel="noopener">Measuring sustainable development progress in Peru using multivariate latent Markov models</a>
+        </div>
+        <div class="pub-authors"><strong>Roscioli, F.</strong>, Malerba, D., &amp; Farcomeni, A.</div>
+        <div class="pub-journal">Sustainable Development</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-num">2</span>
+          <span class="pub-year">2025</span>
+        </div>
+        <div class="pub-title">
+          <a href="https://doi.org/10.3389/fpubh.2025.1604713" target="_blank" rel="noopener">Urban household food insecurity and pediatric malnutrition: evidence from the Divina Providencia Hospital in Luanda, Angola</a>
+        </div>
+        <div class="pub-authors">Carbone, A.S., <strong>Roscioli, F.</strong>, &amp; Mazziotta, M.</div>
+        <div class="pub-journal">Frontiers in Public Health, 13, 1604713</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-num">3</span>
+          <span class="pub-year">2024</span>
+        </div>
+        <div class="pub-title">
+          <a href="https://doi.org/10.1016/j.enpol.2024.114192" target="_blank" rel="noopener">Changing carbon footprints and the consequent impacts of carbon taxes and cash transfers on poverty and inequality across years: A Peruvian case study</a>
+        </div>
+        <div class="pub-authors">Malerba, D., <strong>Roscioli, F.</strong>, Gaentzsch, A., &amp; Ward, H.</div>
+        <div class="pub-journal">Energy Policy, 192</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-num">4</span>
+          <span class="pub-year">2022</span>
+        </div>
+        <div class="pub-title">
+          <a href="https://doi.org/10.1057/s41287-022-00517-3" target="_blank" rel="noopener">Can integrated social protection programmes affect social cohesion? Mixed-methods evidence from Malawi</a>
+        </div>
+        <div class="pub-authors">Burchi, F., &amp; <strong>Roscioli, F.</strong></div>
+        <div class="pub-journal">The European Journal of Development Research</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-num">5</span>
+          <span class="pub-year">2021</span>
+        </div>
+        <div class="pub-title">
+          <a href="https://doi.org/10.3390/d13080367" target="_blank" rel="noopener">Seeding Resilient Restoration: An Indicator System for the Analysis of Tree Seed Systems</a>
+        </div>
+        <div class="pub-authors">Atkinson, R.J.; Thomas, E.; <strong>Roscioli, F.</strong>; et al.</div>
+        <div class="pub-journal">Diversity, 13, 367</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-num">6</span>
+          <span class="pub-year">2020</span>
+        </div>
+        <div class="pub-title">
+          <a href="https://doi.org/10.1080/21683565.2020.1849605" target="_blank" rel="noopener">Introducing agroecology in primary schools: an independent impact evaluation in Uruguay</a>
+        </div>
+        <div class="pub-authors"><strong>Roscioli, F.</strong>, Malerba, D., &amp; Burchi, F.</div>
+        <div class="pub-journal">Agroecology and Sustainable Food Systems</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <span class="pub-num">7</span>
+          <span class="pub-year">2018</span>
+        </div>
+        <div class="pub-title">
+          Sustainable development in rural areas of Mexico through beekeeping
+        </div>
+        <div class="pub-authors">Vinci, G., Rapa, M., &amp; <strong>Roscioli, F.</strong></div>
+        <div class="pub-journal">International Journal of Science and Engineering Invention</div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-label">Selected Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-year">2026</div>
+        <div>
+          <div class="exp-role">Trainee, Joint Research Centre</div>
+          <div class="exp-where">European Commission · Ispra, Italy · Composite indicators, poverty brief</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2024–25</div>
+        <div>
+          <div class="exp-role">Research Fellow</div>
+          <div class="exp-where">Fondazione Tor Vergata · SAM/CGE modelling, GTAP 11 · Rome</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2025</div>
+        <div>
+          <div class="exp-role">Guest Researcher</div>
+          <div class="exp-where">IDOS – German Institute of Development and Sustainability · Bonn</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2023</div>
+        <div>
+          <div class="exp-role">Consultant Statistician</div>
+          <div class="exp-where">World Bank · FAO Food Loss Index &amp; UNEP Food Waste Index · Rome</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2021</div>
+        <div>
+          <div class="exp-role">Consultant Statistician</div>
+          <div class="exp-where">FAO – Statistical Division (ESS) · Composite indicator feasibility · Rome</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2021–22</div>
+        <div>
+          <div class="exp-role">Consultant Economist</div>
+          <div class="exp-where">Alliance of Bioversity International and CIAT · Global cocoa value chain · Rome</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2019–20</div>
+        <div>
+          <div class="exp-role">Consultant Economist</div>
+          <div class="exp-where">Alliance of Bioversity International and CIAT · Forest restoration, Peru · Lima</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2013–18</div>
+        <div>
+          <div class="exp-role">Freelance Photojournalist</div>
+          <div class="exp-where">The Washington Post · Heifer International · Under the Same Sun · Tulime</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching">
+      <div class="section-label">Teaching</div>
+
+      <div class="teach-item">
+        <div class="teach-year">A.Y. 2023/24</div>
+        <div>
+          <div class="teach-course">Microeconomics <span class="teach-level">Teaching assistant · Undergraduate · Tor Vergata</span></div>
+        </div>
+      </div>
+      <div class="teach-item">
+        <div class="teach-year">A.Y. 2023/24</div>
+        <div>
+          <div class="teach-course">Environmental Economics and Policy <span class="teach-level">Teaching assistant · Graduate · Tor Vergata</span></div>
+        </div>
+      </div>
+      <div class="teach-item">
+        <div class="teach-year">A.Y. 2023/24</div>
+        <div>
+          <div class="teach-course">Big Data Analysis for Economics and Finance <span class="teach-level">Teaching assistant · Graduate · Tor Vergata</span></div>
+        </div>
+      </div>
+      <div class="teach-item">
+        <div class="teach-year">2020–23</div>
+        <div>
+          <div class="teach-course">Research Methods <span class="teach-level">Course coordinator · Graduate · Roma Tre</span></div>
+        </div>
+      </div>
+      <div class="teach-item">
+        <div class="teach-year">A.Y. 2021/22</div>
+        <div>
+          <div class="teach-course">Computer Science <span class="teach-level">Professor · Undergraduate · Roma Tre</span></div>
+        </div>
+      </div>
+      <div class="teach-item">
+        <div class="teach-year">2020–22</div>
+        <div>
+          <div class="teach-course">R for Multivariate Analysis <span class="teach-level">Lecturer · Graduate · Roma Tre</span></div>
+        </div>
+      </div>
+      <div class="teach-item">
+        <div class="teach-year">2018–22</div>
+        <div>
+          <div class="teach-course">Research Methods <span class="teach-level">Lecturer · Graduate · Roma Tre</span></div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /primary -->
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-block">
+      <h3>Links</h3>
+      <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" class="sidebar-link">Google Scholar <span class="arr">↗</span></a>
+      <a href="assets/docs/Research_methods.pdf" target="_blank" class="sidebar-link">Research Methods Slides <span class="arr">↗</span></a>
+      <a href="assets/docs/Data_visualization.pdf" target="_blank" class="sidebar-link">Data Visualisation Slides <span class="arr">↗</span></a>
+      <a href="assets/docs/Field_Research.pdf" target="_blank" class="sidebar-link">Field Research Slides <span class="arr">↗</span></a>
+      <a href="photography.html" class="sidebar-link">Photography Portfolio <span class="arr">↗</span></a>
+      <a href="assets/docs/ROF_cv.pdf" class="sidebar-link">Download CV <span class="arr">↓</span></a>
+    </div>
+
+    <div class="sidebar-block">
+      <h3>Contact</h3>
+      <div class="contact-line"><a href="mailto:federico.roscioli@students.uniroma2.eu">federico.roscioli@<br>students.uniroma2.eu</a></div>
+      <div class="contact-line">Tor Vergata School of Economics<br>Via Columbia 2<br>00133 Rome, Italy</div>
+    </div>
+
+  </aside>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  © 2026 Federico Roscioli · <a href="mailto:federico.roscioli@students.uniroma2.eu">federico.roscioli@students.uniroma2.eu</a>
+</footer>
+
+</body>
+</html>

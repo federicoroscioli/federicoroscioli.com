@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography — Federico Roscioli</title>
+<meta name="description" content="Photojournalism by Federico Roscioli — documentary projects from Italy, France, Tanzania, and beyond.">
+<link rel="icon" type="image/jpeg" href="assets/logos/fav_icon.jpg">
+<style>
+  :root {
+    --bg: #f6f1eb;
+    --surface: #efe9e0;
+    --surface2: #e8e0d5;
+    --text: #211a10;
+    --muted: #7a6a55;
+    --accent: #8b4a2b;
+    --accent-hover: #6e3a20;
+    --border: #d4c9b8;
+    --border-light: #ddd5c5;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.75;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--text);
+    color: var(--bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c8bfaf;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav ul a:hover, nav ul a.active { color: var(--bg); }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 48px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .page-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .page-header h1 {
+    font-size: 2.4rem;
+    font-weight: normal;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .page-header p {
+    font-size: 1rem;
+    color: #4a3c28;
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* ── PROJECT NAV ── */
+  .project-nav {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 48px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .project-nav-inner {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .project-nav-inner a {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 14px 20px 12px;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .project-nav-inner a:hover { color: var(--text); border-color: var(--border); }
+
+  /* ── PROJECTS ── */
+  .projects {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  /* ── PROJECT BLOCK ── */
+  .project {
+    padding: 64px 0 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .project:last-child { border-bottom: none; }
+
+  .project-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .project-title {
+    font-size: 1.7rem;
+    font-weight: normal;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .project-year {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .project-location {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .project-location::before {
+    content: '◦';
+    color: var(--accent);
+  }
+  .project-desc {
+    font-size: 0.97rem;
+    color: #4a3c28;
+    line-height: 1.82;
+    max-width: 680px;
+    margin-bottom: 32px;
+  }
+  .project-badge {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    background: var(--accent-light, #f0ddd3);
+    color: var(--accent);
+    border: 1px solid #ddbba8;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ── SLIDESHOW ── */
+  /* Small autoplaying slideshow per project. Clicking the photo enlarges the
+     whole slideshow into a fixed overlay — it stays a slideshow (arrows, dots,
+     autoplay keep working), it does not become a single static photo. */
+  .slideshow { max-width: 440px; margin-bottom: 28px; }
+  .ss-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .ss-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+  }
+  .ss-prev, .ss-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: rgba(33, 26, 16, 0.5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.15s;
+  }
+  .ss-prev:hover, .ss-next:hover { background: var(--accent); }
+  .ss-prev { left: 8px; }
+  .ss-next { right: 8px; }
+  .ss-close { display: none; }
+
+  /* Dots: one per photo, current highlighted, click to jump. */
+  .ss-dots { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .ss-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .ss-dot:hover { background: var(--muted); }
+  .ss-dot.active { background: var(--accent); }
+
+  /* Enlarged: same element, fixed and centered over a dark backdrop. */
+  .slideshow.enlarged {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    max-width: none;
+    margin: 0;
+    background: rgba(20, 15, 8, 0.94);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+  }
+  .slideshow.enlarged .ss-stage {
+    width: 92vw;
+    height: 78vh;
+    aspect-ratio: auto;
+    background: transparent;
+    border: none;
+  }
+  .slideshow.enlarged .ss-img { object-fit: contain; cursor: default; }
+  .slideshow.enlarged .ss-prev, .slideshow.enlarged .ss-next {
+    width: 52px;
+    height: 52px;
+    font-size: 1.9rem;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .slideshow.enlarged .ss-prev { left: 16px; }
+  .slideshow.enlarged .ss-next { right: 16px; }
+  .slideshow.enlarged .ss-dots { justify-content: center; max-width: 92vw; margin-top: 18px; }
+  .slideshow.enlarged .ss-dot { background: rgba(255, 255, 255, 0.4); }
+  .slideshow.enlarged .ss-dot.active { background: #fff; }
+  .slideshow.enlarged .ss-close {
+    display: flex;
+    position: fixed;
+    top: 18px;
+    right: 26px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+  }
+  .slideshow.enlarged .ss-close:hover { color: #fff; }
+
+  /* ── VIDEO ── */
+  /* Facade: a poster with a play button. The real player is only injected on
+     click, so the page never loads a YouTube iframe it can't configure. */
+  .video-facade {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    background-color: #111;
+    cursor: pointer;
+    margin-bottom: 12px;
+  }
+  .vf-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: rgba(139, 74, 43, 0.9);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.15s;
+  }
+  .video-facade:hover .vf-play { background: var(--accent); }
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #111;
+    margin-bottom: 12px;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-caption {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.74rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .video-caption a { color: var(--accent); text-decoration: none; }
+  .video-caption a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: #7a6a55;
+    text-align: center;
+    padding: 28px 48px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+  footer a { color: #9a8a75; text-decoration: none; }
+  footer a:hover { color: var(--bg); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    nav ul { gap: 16px; }
+    .page-header, .projects { padding-left: 20px; padding-right: 20px; }
+    .project-nav { padding: 0 20px; }
+    .slideshow { max-width: none; }
+    .ss-prev, .ss-next { width: 34px; height: 34px; font-size: 1.2rem; }
+    .page-header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="logo">Federico Roscioli</a>
+  <ul>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="photography.html" class="active">Photography</a></li>
+    <li><a href="assets/docs/ROF_cv.pdf">CV</a></li>
+  </ul>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <div class="page-eyebrow">Freelance Photojournalist · 2013–2018</div>
+  <h1>Photography</h1>
+  <p>Documentary and photojournalism work produced between 2013 and 2018, covering social and environmental stories across Italy, France, Tanzania, and Peru. Published in The Washington Post and for Heifer International, Under the Same Sun, and Tulime.</p>
+</div>
+
+<!-- ── PROJECT NAV ── -->
+<div class="project-nav">
+  <div class="project-nav-inner">
+    <a href="#calais">Calais – The Jungle</a>
+    <a href="#parkinson">Se ti muovi non ci pensi</a>
+    <a href="#albinism">Persons with Albinism</a>
+    <a href="#ippica">Ippica</a>
+    <a href="#calitri">Calitri</a>
+    <a href="#taranto">Taranto</a>
+  </div>
+</div>
+
+<!-- ── PROJECTS ── -->
+<div class="projects">
+
+  <!-- 1. CALAIS -->
+  <div class="project" id="calais">
+    <div class="project-header">
+      <h2 class="project-title">Calais – The Jungle</h2>
+      <span class="project-year">2016</span>
+    </div>
+    <div class="project-location">Calais, France</div>
+    <p class="project-desc">
+      Documentary coverage of the refugee and immigrant encampment on the outskirts of Calais, France — a makeshift settlement that existed from January 2015 until its demolition in October 2016. At its peak the camp housed nearly 10,000 people attempting to cross into the United Kingdom. The work focuses on daily life, community, and dignity inside the camp during the European migration crisis.
+    </p>
+    <div class="slideshow" data-prefixes="calais:22" data-label="Calais — The Jungle">
+      <div class="ss-stage">
+        <button class="ss-prev" aria-label="Previous photo">‹</button>
+        <img class="ss-img" alt="">
+        <button class="ss-next" aria-label="Next photo">›</button>
+        <button class="ss-close" aria-label="Close">×</button>
+      </div>
+      <div class="ss-dots"></div>
+    </div>
+  </div>
+
+  <!-- 2. SE TI MUOVI -->
+  <div class="project" id="parkinson">
+    <div class="project-header">
+      <h2 class="project-title">Se ti muovi non ci pensi</h2>
+      <span class="project-year">2014</span>
+    </div>
+    <div class="project-location">Rome, Italy</div>
+    <p class="project-desc">
+      The stories of Edda and her daughter Alessandra, both living with Parkinson's disease. A long-form portrait of two generations sharing the same diagnosis — and the ways movement, routine, and relationship become forms of resistance.
+    </p>
+    <div class="video-facade" data-id="XxFfL4yEDJ0" style="background-image:url('assets/video-thumbs/XxFfL4yEDJ0.jpg')">
+      <button class="vf-play" aria-label="Play video">▶</button>
+    </div>
+    <p class="video-caption">Short documentary — Se ti muovi non ci pensi (2014) · <a href="https://www.youtube.com/watch?v=XxFfL4yEDJ0" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+  </div>
+
+  <!-- 3. ALBINISM -->
+  <div class="project" id="albinism">
+    <div class="project-header">
+      <h2 class="project-title">Persons with Albinism</h2>
+      <span class="project-year">2014</span>
+    </div>
+    <div class="project-location">Tanzania</div>
+    <p class="project-desc">
+      An estimated 1 in 1,400 people in Tanzania and East Africa has albinism — one of the highest rates in the world. People with albinism in the region face severe social stigma and, in some areas, targeted violence driven by the belief that their body parts carry magical properties. This project documents the lives, challenges, and resilience of individuals with albinism in Tanzania.
+      <span class="project-badge">The Washington Post</span>
+    </p>
+    <div class="slideshow" data-prefixes="pwa:24" data-label="Persons with Albinism">
+      <div class="ss-stage">
+        <button class="ss-prev" aria-label="Previous photo">‹</button>
+        <img class="ss-img" alt="">
+        <button class="ss-next" aria-label="Next photo">›</button>
+        <button class="ss-close" aria-label="Close">×</button>
+      </div>
+      <div class="ss-dots"></div>
+    </div>
+  </div>
+
+  <!-- 4. IPPICA -->
+  <div class="project" id="ippica">
+    <div class="project-header">
+      <h2 class="project-title">Ippica</h2>
+      <span class="project-year">2014</span>
+    </div>
+    <div class="project-location">Rome, Italy</div>
+    <p class="project-desc">
+      Behind the scenes of Italian horse racing — a sport with deep roots in Italian culture that has seen its institutions and following shrink over recent decades. A portrait of the people and animals who keep it alive.
+    </p>
+    <div class="slideshow" data-prefixes="ippica:21" data-label="Ippica">
+      <div class="ss-stage">
+        <button class="ss-prev" aria-label="Previous photo">‹</button>
+        <img class="ss-img" alt="">
+        <button class="ss-next" aria-label="Next photo">›</button>
+        <button class="ss-close" aria-label="Close">×</button>
+      </div>
+      <div class="ss-dots"></div>
+    </div>
+  </div>
+
+  <!-- 5. CALITRI -->
+  <div class="project" id="calitri">
+    <div class="project-header">
+      <h2 class="project-title">Calitri e il calitrano</h2>
+      <span class="project-year">2013</span>
+    </div>
+    <div class="project-location">Calitri, Campania, Italy</div>
+    <p class="project-desc">
+      A portrait of Calitri, a small hilltop town in the Campanian Apennines, and its people — a community shaped by emigration, seismic memory (the town was heavily damaged in the 1980 Irpinia earthquake), and a stubborn attachment to place.
+    </p>
+    <div class="slideshow" data-prefixes="calitri:22" data-label="Calitri e il calitrano">
+      <div class="ss-stage">
+        <button class="ss-prev" aria-label="Previous photo">‹</button>
+        <img class="ss-img" alt="">
+        <button class="ss-next" aria-label="Next photo">›</button>
+        <button class="ss-close" aria-label="Close">×</button>
+      </div>
+      <div class="ss-dots"></div>
+    </div>
+  </div>
+
+  <!-- 6. TARANTO -->
+  <div class="project" id="taranto">
+    <div class="project-header">
+      <h2 class="project-title">Taranto, una città normale</h2>
+      <span class="project-year">2013</span>
+    </div>
+    <div class="project-location">Taranto, Puglia, Italy</div>
+    <p class="project-desc">
+      Part of the <em>Underground</em> project. Taranto is home to one of Europe's largest steel plants — ILVA — and has been at the centre of a decades-long conflict between industrial employment and severe environmental contamination. This work looks at how the city's young people navigate that contradiction: building lives, culture, and resistance in a place the rest of Italy largely watches from a distance.
+    </p>
+    <div class="slideshow" data-prefixes="taranto1:19,taranto2:19" data-label="Taranto, una città normale">
+      <div class="ss-stage">
+        <button class="ss-prev" aria-label="Previous photo">‹</button>
+        <img class="ss-img" alt="">
+        <button class="ss-next" aria-label="Next photo">›</button>
+        <button class="ss-close" aria-label="Close">×</button>
+      </div>
+      <div class="ss-dots"></div>
+    </div>
+    <div class="video-facade" data-id="qacEFu8gcMY" style="background-image:url('assets/video-thumbs/qacEFu8gcMY.jpg')">
+      <button class="vf-play" aria-label="Play video">▶</button>
+    </div>
+    <p class="video-caption">Short documentary — Taranto, una città normale (2013) · <a href="https://www.youtube.com/watch?v=qacEFu8gcMY" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+  </div>
+
+</div><!-- /projects -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  © 2026 Federico Roscioli · <a href="mailto:federico.roscioli@students.uniroma2.eu">federico.roscioli@students.uniroma2.eu</a>
+</footer>
+
+<script>
+  // ── Slideshows ──
+  // Each .slideshow carries data-prefixes like "calais:22" (or two series for
+  // Taranto, "taranto1:19,taranto2:19"). We expand that into the full file list.
+  // The slideshow autoplays; clicking the photo enlarges the whole widget into a
+  // fixed overlay that is STILL a slideshow — arrows, dots and autoplay keep
+  // working, it does not collapse to a single static photo.
+  document.querySelectorAll('.slideshow').forEach(ss => {
+    const files = [];
+    ss.dataset.prefixes.split(',').forEach(part => {
+      const [prefix, count] = part.split(':');
+      for (let i = 1; i <= +count; i++) {
+        files.push(`assets/photos-web/${prefix}${String(i).padStart(3, '0')}.jpg`);
+      }
+    });
+    const label = ss.dataset.label || '';
+    const img = ss.querySelector('.ss-img');
+    const dotsWrap = ss.querySelector('.ss-dots');
+    let idx = 0, timer = null;
+
+    // one dot per photo; the active dot shows which photo you are on
+    files.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'ss-dot';
+      dot.setAttribute('aria-label', `Photo ${i + 1}`);
+      dot.addEventListener('click', e => { e.stopPropagation(); show(i); restart(); });
+      dotsWrap.appendChild(dot);
+    });
+    const dots = [...dotsWrap.children];
+
+    function show(i) {
+      idx = (i + files.length) % files.length;             // wrap around both ends
+      img.src = files[idx];
+      img.alt = `${label} — photo ${idx + 1} of ${files.length}`;
+      dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      new Image().src = files[(idx + 1) % files.length];    // preload the next one
+    }
+    function start() { timer = setInterval(() => show(idx + 1), 4500); }
+    function restart() { clearInterval(timer); start(); }    // avoid an instant jump after a manual move
+
+    ss.querySelector('.ss-prev').addEventListener('click', e => { e.stopPropagation(); show(idx - 1); restart(); });
+    ss.querySelector('.ss-next').addEventListener('click', e => { e.stopPropagation(); show(idx + 1); restart(); });
+
+    // click photo → enlarge; close button, backdrop or Escape → shrink back
+    img.addEventListener('click', () => ss.classList.add('enlarged'));
+    ss.querySelector('.ss-close').addEventListener('click', e => { e.stopPropagation(); ss.classList.remove('enlarged'); });
+    ss.addEventListener('click', e => { if (ss.classList.contains('enlarged') && e.target === ss) ss.classList.remove('enlarged'); });
+
+    show(0);
+    start();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.slideshow.enlarged').forEach(s => s.classList.remove('enlarged'));
+  });
+
+  // ── Video facades ──
+  // Clicking a poster swaps in the real player (nocookie domain, autoplay). The
+  // iframe is only created on demand, which avoids the config error you get when
+  // an embed loads with no verifiable page origin (e.g. opening the file:// copy).
+  document.querySelectorAll('.video-facade').forEach(facade => {
+    facade.addEventListener('click', () => {
+      const wrap = document.createElement('div');
+      wrap.className = 'video-wrap';
+      wrap.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${facade.dataset.id}?autoplay=1&rel=0" title="video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      facade.replaceWith(wrap);
+    });
+  });
+</script>
+
+</body>
+</html>
