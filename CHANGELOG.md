@@ -3,6 +3,37 @@
 All notable changes to the site are recorded here: the feature or bug, the exact
 change, what was verified, and the downstream impact.
 
+## 2026-07-03
+
+### Simplified homepage link row + trimmed a duplicate sidebar link
+- **Feature:** requested changes now that the site is live.
+- **Change:**
+  - `index.html`: the "freelance photojournalist" mention in the bio is now
+    plain text (no longer links to Photography, since Photography is already in
+    both the top nav and the row below the bio). The link row below the bio
+    paragraph was replaced with exactly three links — **Research, Photography,
+    Contact** — replacing the previous set (Download CV, Photography, Google
+    Scholar, Email). CV and the top-nav links are unaffected.
+  - `research.html`: removed "Photography Portfolio" from the sidebar Links
+    block — Photography is already reachable from the top nav on every page, so
+    the sidebar no longer repeats it.
+- **Verified:** served locally, confirmed in-browser that the bio text is
+  unlinked, the new three-link row renders as Research/Photography/Contact, and
+  the research sidebar now lists Google Scholar, three teaching-slide PDFs, and
+  Download CV (no Photography entry).
+- **Impact:** homepage and research page have one less redundant link each.
+
+### YouTube videos confirmed working on the live site
+- **Bug (resolved without a code change):** videos still failed once hosted,
+  even though the earlier `file://`-origin fix (click-to-play facade,
+  `youtube-nocookie.com`) was in place. Likely cause: YouTube's per-video
+  "allowed domains" embedding restriction not yet covering the new hosting
+  domain. Federico checked/adjusted the video's embedding settings in YouTube
+  Studio; playback now works on the live GitHub Pages site.
+- **Impact:** no site-code change was needed; noting this here in case the
+  domain changes again (e.g. once `www.federicoroscioli.com` goes live) and the
+  same symptom reappears — check the YouTube Studio embedding allow-list first.
+
 ## 2026-07-02
 
 ### Added a Research page + reworked the slideshows
