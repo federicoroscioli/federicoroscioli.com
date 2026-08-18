@@ -3,6 +3,35 @@
 All notable changes to the site are recorded here: the feature or bug, the exact
 change, what was verified, and the downstream impact.
 
+## 2026-08-18
+
+### Added PRSS and Storytelling links + new Storytelling placeholder page
+- **Feature:** wanted a link to the PRSS website, consistent with the existing
+  Research/Photography links, in both the top nav and the homepage link row.
+  Also wanted a Storytelling link/page as a work-in-progress placeholder.
+- **Change:**
+  - Added a **PRSS** link (https://federicoroscioli.github.io/prss/, opens in a
+    new tab since it's a separate site) and a **Storytelling** link
+    (`storytelling.html`) to the top nav on all three pages (`index.html`,
+    `research.html`, `photography.html`) and to the homepage link row below the
+    bio, in the same `.btn-ghost` / nav-link style as Research and Photography.
+  - New `storytelling.html`: a minimal placeholder page reusing the site's nav,
+    palette, and footer, with an eyebrow reading "Work in Progress" and a link
+    back to the homepage. No content yet — to be built out later.
+  - Local working copy: the `sito` folder had gone missing from Dropbox between
+    sessions (not deleted by this session) while the live site kept working
+    fine — Federico had been editing small things directly on GitHub in the
+    meantime (e.g. the "Update research section with new titles and authors"
+    commit). Re-cloned the repo from GitHub back into Dropbox to resume local,
+    multi-file editing; nothing was lost since GitHub was always the source of
+    truth.
+- **Verified:** served locally and confirmed in-browser that the homepage nav
+  and link row both show Research/Photography/PRSS/Storytelling/CV(or Contact)
+  in order, the PRSS link's href is the external URL, and the Storytelling page
+  renders with the site's standard nav/footer.
+- **Impact:** site now has four top-level destinations plus an external PRSS
+  link; Storytelling is live as a placeholder ready for real content later.
+
 ## 2026-07-03
 
 ### Added the R textbook + interactive exercises to the Research sidebar
