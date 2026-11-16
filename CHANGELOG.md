@@ -3,6 +3,91 @@
 All notable changes to the site are recorded here: the feature or bug, the exact
 change, what was verified, and the downstream impact.
 
+## 2026-11-16
+
+### CVs updated, Storytelling page removed, working-paper titles corrected
+- **Request:** update the CVs on the site, remove the Storytelling page and its menu links, and fix the titles of the
+  papers listed under "Work in Progress".
+- **Change:**
+  - `assets/docs/academic.pdf` and `business.pdf` replaced with PDFs compiled from the current Overleaf sources
+    (`cv_academic_en.tex`, `cv_business_en.tex`; compiled locally with latexmk). The academic CV gains a "Reports and
+    Technical Guidelines" section; the business CV has a rewritten profile and updated JRC entries. Previous versions
+    archived in `Sito 2026/old/2026-11-16_prima-di-cv-e-storytelling/`.
+  - Local clone synced to GitHub (it was 8 commits behind: the online upload of `academic.pdf`/`business.pdf`, link
+    changes, removal of `ROF_cv.pdf`). `SITO.md` now carries those links (`cv:` and the Research sidebar/intro link),
+    so the online-edit check is not triggered by them.
+  - Storytelling removed: `storytelling.html` deleted (`git rm`), entry removed from the menu and the home link row
+    (both come from `SITO.md → Navigation`), `## Storytelling` section removed from `SITO.md`; `02_genera_sito.py` no
+    longer requires that section or the page (now three pages: home, research, photography); `aggiorna_sito.sh` no longer
+    opens it. The address `/storytelling.html` will return 404.
+  - "Work in Progress" titles taken from the latest drafts listed in the academic CV: *The Impact of Internal
+    Colonisation on Land Condition in Uruguay*; *Greener on the Other Side: Environmental Policy Diffusion through U.S.
+    Economic Regions*; *A Distributional Emissions Account for Italy: Carbon Footprints by Consumption, Income, and
+    Wealth*. Replaces "Gendering the Land…" and "Emissions inequality: evidence from household survey data".
+  - Generator markers re-inserted in the three pages after the sync (the earlier uncommitted conversion had been put
+    aside with `git stash` to pull).
+- **Verified:** on a scratch copy, regenerating the three pages from the new `SITO.md` differs from the current pages
+  only by the intended changes (Storytelling links gone, new working-paper titles) plus the three known cosmetic
+  differences (Research intro link style moved to CSS, Calais alt-text dash, one HTML comment); no mention of
+  Storytelling left in the output, no broken local links. CV PDFs compile cleanly (academic 4 pages, business 2, same
+  as the previous versions) and the text diff against the online PDFs shows the intended content updates.
+- **Impact:** at the first run of `aggiorna_sito.command` these changes go live. That run has no stored "last
+  generation" copy yet, so it will not check for online edits. Anyone with the old `/storytelling.html` link gets a 404.
+  Local LaTeX may wrap lines slightly differently from Overleaf.
+
+## 2026-10-20
+
+### Single source `SITO.md` + one-click update command (same approach as MRSS)
+- **Feature:** site text (menu, footer, email, CV paths, home bio, Research page,
+  Photography projects, Storytelling) was copy-pasted across four HTML pages, so one
+  change (e.g. the MRSS link fix) meant several edits and commits. Wanted a single
+  markdown file feeding the site, plus a script/command that updates and publishes it,
+  like the MRSS project.
+- **Change:**
+  - New, outside this repo (in `Sito 2026/`, so they are not published):
+    `SITO.md` (the only file to edit; format rules in its header),
+    `codice/02_genera_sito.py` (rewrites the generated parts of the pages),
+    `codice/01_ottimizza_foto.sh` (resizes new/changed originals from `foto/` into
+    `assets/photos-web/`, only if newer than the existing copy),
+    `aggiorna_sito.sh` (pull -> photos -> generate -> show changes -> commit/push),
+    `aggiorna_sito.command` (double-click wrapper around the `.sh`).
+  - The four pages now carry `<!-- BEGIN:name --> ... <!-- END:name -->` markers around
+    the generated parts (meta, nav, footer, home hero, Research header/keywords/work in
+    progress/publications/experience/teaching/sidebar, Photography header/project
+    menu/projects, Storytelling placeholder). Only comment lines were added; CSS, the
+    slideshow/lightbox script and the profile photo stay hand-written.
+  - `research.html`: added `.hero p a { ... }` to the CSS (same rule `index.html` has),
+    so the intro link no longer needs an inline `style=`.
+  - Photo count per project is read from the files in `assets/photos-web/`
+    (`prefixNNN.jpg`, must be consecutive); video poster is `assets/video-thumbs/ID.jpg`.
+  - Online-edit protection: the generator keeps a copy of the last `SITO.md` it used
+    (`codice/ultima_generazione/`), recomputes the old output from it, and stops (exit 3,
+    shows the differing lines) if a generated part was edited outside `SITO.md`;
+    `--forza` / typing "sovrascrivi" overrides. No alarm if the edit was already copied
+    into `SITO.md`, and the photo count is ignored in the comparison (it comes from disk).
+  - Originals archived before the change: `Sito 2026/old/2026-10-20_html-prima-di-SITO-md/`.
+  - Local clone fast-forwarded to `55fb870` first (it was 10 commits behind the online
+    edits: new bio, gmail address, MRSS link, `CV_ROF.pdf` / `CV_academia.pdf`); `SITO.md`
+    was seeded from that live content, so none of those online edits are lost.
+- **Verified:** on scratch copies only (nothing real was regenerated or published):
+  round trip (markers in the live pages, regenerate from `SITO.md`, diff) reproduces the
+  live content apart from three cosmetic differences listed below; md edits reach exactly
+  the right lines/pages; renaming a menu item updates all four pages (nav + home row);
+  adding a photo and adding a project work; error messages for missing field, wrong field
+  count, missing section/part, missing/non-consecutive photos, unknown marker; full
+  `aggiorna_sito.sh` runs against a local bare repo (no change, decline to publish then
+  publish, online edit outside and inside generated parts, stop persisting across runs,
+  "sovrascrivi" path). Bug found and fixed during testing: adding a photo triggered a
+  false "edited online" alarm (photo count comes from disk, not from `SITO.md`).
+- **Impact:** the first run of `aggiorna_sito.command` will show these changes in the
+  pages (rendering is identical): (1) Research intro link: inline `style=` replaced by the
+  CSS rule; (2) Calais slideshow `data-label` (alt text) uses an en dash like the title;
+  (3) HTML comment `<!-- 2. SE TI MUOVI -->` becomes `<!-- 2. PARKINSON -->`; plus trailing
+  whitespace removed. That first run has no "last generation" copy yet, so it does not
+  check for online edits; later runs do. `SITO.md` lives outside the repo (not on GitHub).
+  The old `optimize-photos.sh` in this repo is superseded by `codice/01_ottimizza_foto.sh`
+  and left untouched.
+
 ## 2026-08-18
 
 ### Added PRSS and Storytelling links + new Storytelling placeholder page
