@@ -3,6 +3,20 @@
 All notable changes to the site are recorded here: the feature or bug, the exact
 change, what was verified, and the downstream impact.
 
+## 2026-11-18
+
+### CVs refreshed from the updated Overleaf sources
+- **Request:** update the CVs on the website (the Overleaf sources were edited again on 2026-11-18).
+- **Change:** `assets/docs/academic.pdf` (4 pages) and `assets/docs/business.pdf` (2 pages) replaced with PDFs
+  recompiled from `cv_academic_en.tex` and `cv_business_en.tex` (`latexmk -pdf`, compiled under names without
+  underscores). Previous PDFs archived in `old/2026-11-18_prima-di-aggiornare-cv/` (project root, outside this repo).
+  `SITO.md` and the HTML are unchanged: the links already point to these two files.
+- **Verified:** both compile with exit 0 and keep the same page count; word-level diff against the previous PDFs shows
+  the new text (COIN Web App line, Python for Everybody course in the academic CV; Claude Code, certifications and
+  COIN lines, reworded bullets in the business CV).
+- **Impact:** after `aggiorna_sito.command` the Research page ("CV (PDF)", "Download my academic CV") and the menu
+  "CV" link serve the new files. Browsers may cache the old PDFs for a short while.
+
 ## 2026-11-16
 
 ### CVs updated, Storytelling page removed, working-paper titles corrected
